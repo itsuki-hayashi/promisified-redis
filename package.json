@@ -1,0 +1,33 @@
+{
+  "name": "redis-async",
+  "version": "0.0.1",
+  "description": "Bluebird promisified version for NodeRedis/node_redis with TypeScript declarations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edsgerlin/redis-async.git"
+  },
+  "keywords": [
+    "redis"
+  ],
+  "author": "Chin-Yuan Lin <edsgerlin@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edsgerlin/redis-async/issues"
+  },
+  "homepage": "https://github.com/edsgerlin/redis-async#readme",
+  "dependencies": {
+    "bluebird": "~3.5.1",
+    "redis": "~2.8.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "~3.5.19",
+    "@types/node": "~8.5.8",
+    "@types/redis": "~2.8.4",
+    "tslint": "~5.9.1",
+    "typescript": "~2.6.2"
+  }
+}

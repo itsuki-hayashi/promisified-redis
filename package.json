@@ -1,6 +1,6 @@
 {
   "name": "promisified-redis",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bluebird promisified version for NodeRedis/node_redis with TypeScript declarations.",
   "main": "index.js",
   "repository": {
@@ -16,12 +16,10 @@
     "url": "https://github.com/edsgerlin/promisified-redis/issues"
   },
   "homepage": "https://github.com/edsgerlin/promisified-redis#readme",
-  "dependencies": {
+  "peerDependencies": {
     "@types/bluebird": "3.x",
     "@types/node": "*",
-    "@types/redis": "2.x"
-  },
-  "peerDependencies": {
+    "@types/redis": "2.x",
     "bluebird": "3.x",
     "redis": "2.x"
   },

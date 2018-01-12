@@ -1,6 +1,7 @@
 
 import { promisifyAll } from 'bluebird';
 import * as redis from 'redis';
+import { EventEmitter } from 'events';
 promisifyAll(redis.RedisClient.prototype)
 promisifyAll(redis.Multi.prototype);
 declare module 'redis' {
@@ -918,5 +919,29 @@ declare module 'redis' {
      * Incrementally iterate sorted sets elements and associated scores.
      */
     zscanAsync: PromisifiedOverloadedKeyCommand<string, [string, string[]]>;
+  }
+
+  export interface RedisClient extends Commands<boolean>, EventEmitter {
+    /**
+     * Client methods.
+     */
+    duplicateAsync(options?: ClientOpts): Promise<RedisClient>;
+
+    sendCommandAsync(command: string, args?: any[]): Promise<any>;
+
+    send_commandAsync(command: string, args?: any[]): Promise<any>;
+
+    /**
+     * Mark the start of a transaction block.
+     */
+    multiAsync(args?: Array<Array<string | number>>): Promise<any>;
+
+    batchAsync(args?: Array<Array<string | number>>): Promise<any>;
+  }
+
+  export interface Multi extends Commands<Multi> {
+    execAsync(cb?: Callback<any[]>): Promise<any[]>;
+
+    exec_atomicAsync(): Promise<any[]>;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "promisified-redis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bluebird promisified version for NodeRedis/node_redis with TypeScript declarations.",
   "main": "index.js",
   "scripts": {

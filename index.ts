@@ -147,7 +147,7 @@ declare module 'redis' {
     bitopAsync(operation: string, destkey: string, key1: string, key2: string, key3: string): Promise<number>;
     bitopAsync(operation: string, destkey: string, key1: string, key2: string): Promise<number>;
     bitopAsync(operation: string, destkey: string, key: string): Promise<number>;
-    bitop(operation: string, destkey: string, ...args: Array<string | Callback<number>>): R;
+    bitopAsync(operation: string, destkey: string, ...args: Array<string>): Promise<number>;
 
     /**
      * Find first bit set or clear in a string.
@@ -191,9 +191,7 @@ declare module 'redis' {
      * SLAVES - List slave nodes of the specified master node.
      * SLOTS - Get array of Cluster slot to node mappings.
      */
-    cluster: OverloadedCommand<string, any, this>;
-    CLUSTER: OverloadedCommand<string, any, this>;
-
+    clusterAsync: PromisifiedOverloadedCommand<string, any>;
     /**
      * Get array of Redis command details.
      *
@@ -255,8 +253,7 @@ declare module 'redis' {
     /**
      * Echo the given string.
      */
-    echo<T extends string>(message: T, cb?: Callback<T>): R;
-    ECHO<T extends string>(message: T, cb?: Callback<T>): R;
+    echoAsync<T extends string>(message: T): Promise<T>;
 
     /**
      * Execute a Lua script server side.
@@ -492,11 +489,6 @@ declare module 'redis' {
      * Atomically tranfer a key from a Redis instance to another one.
      */
     migrateAsync: PromisifiedOverloadedCommand<string, boolean>;
-
-    /**
-     * Move a key to another database.
-     */
-    move(key: string, db: string | number): R;
 
     /**
      * Set multiple keys to multiple values.

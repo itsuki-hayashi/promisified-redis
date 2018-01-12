@@ -19,9 +19,9 @@
     "url": "https://github.com/edsgerlin/promisified-redis/issues"
   },
   "homepage": "https://github.com/edsgerlin/promisified-redis#readme",
-  "dependencies": {
-    "bluebird": "~3.5.1",
-    "redis": "~2.8.0"
+  "peerDependencies": {
+    "bluebird": "3.x",
+    "redis": "2.x"
   },
   "devDependencies": {
     "@types/bluebird": "~3.5.19",

@@ -1,9 +1,12 @@
 
-import { promisifyAll } from 'bluebird';
 import * as redis from 'redis';
+if (typeof redis.RedisClient.prototype.delAsync === 'undefined'
+  && typeof redis.Multi.prototype.delAsync === 'undefined') {
+  const bluebird = require('bluebird');
+  bluebird.promisifyAll(redis.RedisClient.prototype);
+  bluebird.promisifyAll(redis.Multi.prototype);
+}
 import { EventEmitter } from 'events';
-promisifyAll(redis.RedisClient.prototype)
-promisifyAll(redis.Multi.prototype);
 declare module 'redis' {
   export interface PromisifiedOverloadedCommand<T, U> {
     (arg1: T, arg2: T, arg3: T, arg4: T, arg5: T, arg6: T): Promise<U>;
